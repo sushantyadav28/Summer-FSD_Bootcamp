@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Elements</title>
+    <style>
+        p::before{
+            content:"❤️"
+        }
+        p::after{
+            content:"✔️"
+        }
+        h3::first-letter{
+            color:red;
+            font-size: 30px;
+        }
+        h3::first-line{
+            color: skyblue;
+        }
+        li{
+            color: green;
+        }
+        li::marker{
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>Welcome To Pseudo Elements</p>
+    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti repellendus dignissimos sunt doloribus vel maiores reiciendis expedita molestias aperiam, excepturi illum at blanditiis rem labore, qui est id quisquam. Beatae.</h3>
+    <ul>
+        <li>First Item</li>
+        <li>Second Item</li>
+        <li>Third Item</li>
+    </ul>
+</body>
+</html>
