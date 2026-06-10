@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive example</title>
+    <style>
+        .cont{
+            display:grid;
+            grid-template-columns: repeat(6,1fr);
+        }
+        img{
+            width: 100%;
+            border-radius: 10px;
+        }
+        *{
+            align-items: center;
+             justify-items: center;
+        }
+        @media screen and (max-width:1200px) and (min-width:750px){
+            .cont{
+                grid-template-columns: repeat(3,1fr);
+            }
+        }
+        @media screen and (max-width:749px) and (min-width: 300px){
+            .cont{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+         .cont>div{
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+         .cont img{
+            width: 100%;
+        }
+         .cont button{
+            padding: 10px;
+            width: 100%;
+            background-color: teal;
+            color: white;
+            border: none;
+            border-radius: 5px;
+         }
+    </style>
+</head>
+
+<body>
+    <div class="cont">
+        <div>
+            <img src="https://assetscdn1.paytm.com/images/cinema/Doctor-Strange--In-The-Multiverse-Of-Madness-r-705x750-36f0e140-b752-11ec-a762-319bdb0970f2.jpg"
+                alt="Doctor Strange 2">
+            <h1>Doctor Strange 2</h1>
+            <p>Rating:- 4.5</p>
+            <button>Book Now</button>
+        </div>
+        <div>
+            <img src="https://assetscdn1.paytm.com/images/cinema/bb2--705x750-cbc15240-8a94-11ec-8efd-6d205f33f529.jpg"
+                alt="">
+            <h1>Bhool Bhulaiya 2</h1>
+            <p>Rating:- 4.5</p>
+            <button>Book Now</button>
+        </div>
+        <div>
+            <img src="https://assetscdn1.paytm.com/images/cinema/Jayeshbhai-Jordaar---705x750-660c01c0-cf7c-11ec-98b3-41c37f260d1c.jpg"
+                alt="">
+            <h1>Jayeshbhai Jordaar</h1>
+            <p>Rating:- 4.5</p>
+            <button>Book Now</button>
+        </div>
+        <div>
+            <img src="https://assetscdn1.paytm.com/images/cinema/Doctor-Strange--In-The-Multiverse-Of-Madness-r-705x750-36f0e140-b752-11ec-a762-319bdb0970f2.jpg"
+                alt="Doctor Strange 2">
+            <h1>Doctor Strange 2</h1>
+            <p>Rating:- 4.5</p>
+            <button>Book Now</button>
+        </div>
+        <div>
+            <img src="https://assetscdn1.paytm.com/images/cinema/bb2--705x750-cbc15240-8a94-11ec-8efd-6d205f33f529.jpg"
+                alt="">
+            <h1>Bhool Bhulaiya 2</h1>
+            <p>Rating:- 4.5</p>
+            <button>Book Now</button>
+        </div>
+        <div>
+            <img src="https://assetscdn1.paytm.com/images/cinema/Jayeshbhai-Jordaar---705x750-660c01c0-cf7c-11ec-98b3-41c37f260d1c.jpg"
+                alt="">
+            <h1>Jayeshbhai Jordaar</h1>
+            <p>Rating:- 4.5</p>
+            <button>Book Now</button>
+        </div>
+    </div>
+</body>
+
+</html>

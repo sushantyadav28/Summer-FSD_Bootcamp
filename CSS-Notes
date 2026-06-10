@@ -1,0 +1,60 @@
+# -->CSS Selectors<--
+ A slector in css is a part of the css ruleset, that basically used to select html element to style.
+# types of selectors
+1. CSS Element / tag selector.
+2. CSS Class selector.
+3. CSS ID selector.
+4. CSS Universal selector.
+5. CSS Group Selector.
+------------------------------------------------------------------------------
+# -->Specificity / Priorities<-- 
+inline Style : 1000
+Id           : 100
+Class        : 10
+Tag          : 1
+Universal    : 0
+------------------------------------------------------------------------------
+# -->CSS Combinators<--
+ The Css combinations represents the relationship between two selectors.
+# Types of Combinations
+1. Desecendant selectors () (space).
+2. Child Selector (>).
+3. General sibling selector (~).
+4. Adjacent sibling selector (+).
+--------------------------------------------------------------------------------
+# -->CSS Flex<--
+                    Flex Properties
+                           |
+                -------------------------
+                |                       |
+                V                       V
+        Parent Properties       Child Propereties
+          flex-direction            order
+          flex-wrap                 flex-grow
+          justify-content           flex-shrink
+          align-items               flex-basis
+          align-content
+----------------------------------------------------------------------------------
+# --> CSS Grid.
+1. display
+2. grid-template-columns
+3. grid-template-rows
+4. gap
+5. repeat()
+6. grid-area
+7. Line-based placement/ grid-lines
+8. grid-template-area
+9. units
+----------------------------------------------------------------------------------
+# -->Media Queries<--
+1. width
+2. height
+3. orientation
+4. resolution
+----------------------------------------------------------------------------------
+# -->CSS Positioning<--
+1. static
+2. relative
+3. absolute
+4. fixed
+5. sticky
