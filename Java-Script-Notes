@@ -1,1 +1,358 @@
 # --> JavaScript <--
+
+# Introduction to JavaScript
+JavaScript is a versatile programming language that is primarily used for web development. It is a high-level, interpreted language that allows developers to create interactive and dynamic web pages. JavaScript can be used for both client-side(Browser, It is also work as compiler between the Browser and JavaScript) and server-side development, making it a popular choice for building web applications.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+# History of JavaScript
+JavaScript was created in 1995 by Brendan Eich while he was working at Netscape Communications Corporation. It was originally developed in just 10 days and was initially called Mocha, then renamed to LiveScript, and finally to JavaScript.
+
+Mocha was the original name of the language, but it was changed to LiveScript to reflect its dynamic nature. 
+Now it official name is EcmaScript, but it is commonly referred to as JavaScript.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+# Node.js in JavaScript
+Node.js is a runtime environment that allows developers to run JavaScript on the server side. It is built on Chrome's V8 JavaScript engine and provides an event-driven, non-blocking I/O model that makes it efficient and scalable for building server-side applications. Node.js is commonly used for building web servers, APIs, and real-time applications.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+# NOTE:- cd commands:
+- `cd` - Change directory
+- `cd ..` - Move up one directory 
+- `cd ~` - Move to the home directory
+- `cd -` - Move to the previous directory
+- `cd /` - Move to the root directory
+- `cd <directory_name>` - Move to a specific directory
+- `cd ../<directory_name>` - Move up one directory and then into a specific directory
+- `cd ../../<directory_name>` - Move up two directories and then into a specific directory
+- `cd /path/to/directory` - Move to a specific directory using an absolute path
+
+---------------------------------------------------------------------------------------------------------------------------
+
+# Variables 
+In JavaScript, variables are used to store data values. There are three ways to declare a variable: `var`, `let`, and `const`.
+- `var` is the oldest way to declare a variable and has function scope. It can be re-declared and updated.
+
+- `let` is a newer way to declare a variable and has block scope. It can be updated but not re-declared within the same scope.
+- `const` is used to declare a constant variable that cannot be updated or re-declared. It also has block scope.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+# Table of Variable Declarations:
+      | Keyword | Scope       | Re-declarable | Updatable |
+      |---------|-------------|---------------|-----------|
+      | var     | Function    | Yes           | Yes       |
+      | let     | Block       | No            | Yes       |
+      | const   | Block       | No            | No        |
+
+---------------------------------------------------------------------------------------------------------------------------
+
+# Data Types
+JavaScript has several data types, including:
+- Primitive data types: (or inbuilt data types, or `value data types`)
+- `string` is used to represent text and is enclosed in single or double quotes.
+- `number` is used to represent numeric values, including integers and floating-point numbers.
+- `boolean` is used to represent logical values, either true or false.
+- `null` represents the intentional absence of any object value.
+- `undefined` represents a variable that has been declared but has not been assigned a value.
+
+- Non-primitive data types: (or reference data types, or `object data types`)
+- `object` is a collection of key-value pairs and can represent complex data structures.
+- `array` is a special type of object that is used to store ordered collections of values
+- `function` is a block of code that can be defined and executed when called.
+
+# Example of data types:
+```javascript
+<!-- Primitive Data Types -->
+let name = "John"; // string
+let age = 30; // number
+let isStudent = true; // boolean
+let address = null; // null
+let phoneNumber; // undefined
+
+<!-- Non-Primitive Data Types -->
+let person = { name: "John", age: 30 }; // object
+let numbers = [1, 2, 3, 4, 5]; // array
+let greet = function(a, b){return a + b;} { // function
+  console.log("Hello, " + name);
+};
+```
+---------------------------------------------------------------------------------------------------------------------------
+# Difference btw null and undefined:
+- `null` is an assignment value that represents the intentional absence of any object value.
+-(`Explicitely` set by the programmer to indicate that a variable should have no value.)
+- `undefined` is a variable that has been declared but has not been assigned a value.
+(`Implicitly` set by JavaScript when a variable is declared by not assigned a value, or when a function does not return a value.)
+
+---------------------------------------------------------------------------------------------------------------------------
+# Why use return in a function?
+The `return` statement is used in a function to specify the value that should be returned to the caller when the function is executed. It allows you to output a value from the function and use it in other parts of your code. Without a return statement, a function will return `undefined` by default. Using `return` allows you to capture the result of a function and use it for further processing or to pass it to other functions. 
+---------------------------------------------------------------------------------------------------------------------------
+# Arthmetic Operations
+JavaScript supports various arithmetic operations, including:
+- Addition (`+`): Adds two numbers together.
+- Subtraction (`-`): Subtracts one number from another.
+- Multiplication (`*`): Multiplies two numbers together.
+- Division (`/`): Divides one number by another.
+- Modulus (`%`): Returns the remainder of a division operation.
+- Exponentiation (`**`): Raises a number to the power of another number.
+- Math functions: JavaScript also provides built-in Math functions for more complex mathematical operations, such as
+
+  - `Math.round(x)`: Rounds x to the nearest integer.
+  - `Math.floor(x)`: Rounds x down to the nearest integer.  
+  - `Math.ceil(x)`: Rounds x up to the nearest integer.
+
+---------------------------------------------------------------------------------------------------------------------------
+# Relational Operators
+Relational operators are used to compare two values and return a boolean result. The common relational operators in JavaScript include:
+- Greater than (`>`): Returns true if the left operand is greater than the right operand.
+- Less than (`<`): Returns true if the left operand is less than the right operand.
+- Greater than or equal to (`>=`): Returns true if the left operand is greater than or equal to the right operand.
+- Less than or equal to (`<=`): Returns true if the left operand is less than or equal to the right operand.
+
+---------------------------------------------------------------------------------------------------------------------------
+# Comparison Operators
+Comparison operators are used to compare two values and return a boolean result. The common comparison operators in
+JavaScript include:
+- Equality (`==`): Returns true if the values of the operands are equal, after type coercion.
+- Strict equality (`===`): Returns true if the values and types of the operands are equal, without type coercion.
+
+`(coercion means JavaScript will try to convert the values to a common type before comparing them.)`
+
+Example:
+```javascript
+console.log(5 == '5'); // true (type coercion occurs)
+console.log(5 === '5'); // false (no type coercion, different types)
+console.log(.1 + 0.2 == 0.3); // true (type coercion occurs)
+console.log(.1 + 0.2 === 0.3); // false (no type coercion, different types)
+console.log(.15 + 0.15 == 0.3); // true (type coercion occurs)
+```
+Why does `.1 + 0.2 === 0.3` return false? but .1 + 0.2 == 0.3 returns true?
+- This is because of the way JavaScript handles floating-point arithmetic. 
+- When you perform the operation `.1 + 0.2`, it results in a value that is very close to 0.3, but not exactly equal to it due to the limitations of representing decimal numbers in binary. 
+
+When you use the `==` operator, JavaScript performs type coercion and considers the two values equal because they are close enough. However, when you use the `===` operator, it checks for both value and type equality without coercion, and since the result of `.1 + 0.2` is not exactly equal to 0.3, it returns false.
+---------------------------------------------------------------------------------------------------------------------------
+# TYPE CASTING
+- Type casting is the process of converting a value from one data type to another for a specific purpose. In JavaScript, type casting can be done explicitly or implicitly.
+
+- `Rule 1`: 0 is falsy, while any non-zero number is truthy.
+```javascript
+console.log(0 == false); // true (type coercion occurs)
+console.log(1 == true); // true (type coercion occurs)
+
+console.log(0 == true); // false (type coercion occurs)
+console.log(1 == false); // false (type coercion occurs)
+```
+- `Rule 2`: An empty string is falsy, while any non-empty string is truthy.
+```javascript
+console.log((1>4) == ""); // false
+console.log((1>4) == "Hello"); // false (type coercion occurs, but the empty string is falsy)
+console.log(("Hello")); // true
+```
+- `Rule 3`: null and undefined are falsy. But when use them in a single line, they are truthy.
+```javascript 
+console.log(null == false); // false
+console.log(undefined == false); // false
+console.log(null == undefined); // true (because null || undefined evaluates to undefined, which is falsy, but the Boolean function converts it to true)
+```
+- `Rule 4`: NaN (Not a Number) is falsy. Even if you try to convert it to a boolean, it will still be falsy.
+```javascript
+console.log(NaN == NaN); // false
+console.log(123 == NaN); // false
+```
+---------------------------------------------------------------------------------------------------------------------------
+# Falsy Values in JavaScript
+In JavaScript, the following values are considered falsy:
+- `false`
+- `0` (zero)
+- `""` (empty string)
+- `null`
+- `undefined`
+- `NaN` (Not a Number)
+
+---------------------------------------------------------------------------------------------------------------------------
+# Logical Operators
+Logical operators are used to combine or invert boolean values. The common logical operators in JavaScript include
+- Logical AND (`&&`): Returns true if both operands are true, otherwise returns false. 
+it always search for falsy value, if it find any falsy value then it returns that value. Otherwise it returns the last value.
+- Logical OR (`||`): Returns true if at least one of the operands is true,otherwise returns false.
+And if it doesn't find any truthy value then it returns the last falsy value.
+- Logical NOT (`!`): Returns true if the operand is false, and false if the operand is true. 
+
+# Priority of Logical Operators:[ ! > && > || ]
+1. Logical NOT (`!`)
+2. Logical AND (`&&`)
+3. Logical OR (`||`)
+
+---------------------------------------------------------------------------------------------------------------------------
+# Loops
+Loops are used to execute a block of code repeatedly until a certain condition is met. The common types of loops in JavaScript include:
+- `for` loop
+- `while` loop
+- `do...while` loop
+- `for...in` loop (used for iterating over the properties of an object)
+- `for...of` loop (used for iterating over iterable objects like arrays)
+
+---------------------------------------------------------------------------------------------------------------------------
+# Array Data Type
+- An array is a special type of object that stores any type of data in an ordered collection. Arrays are created using square brackets `[]` and can hold multiple values.
+
+- It has dynamic size, which means you can add or remove elements from an array without having to specify its size in advance. 
+
+- Contiguous memory location, which allows for efficient access to elements using their index.
+
+- Indexing starts from 0, which means the first element of an array is accessed using index 0, the second element using index 1, and so on.
+
+- Ordered Memory Allocation, which means that the elements of an array are stored in contiguous memory locations, allowing for efficient access and manipulation of the array elements.
+
+- Mutable, which means you can change the values of elements in an array after it has been created.
+ - >   (inbuilt functions that is used to change the values of elements in an array are `push()`, `pop()`, `shift()`, `unshift()`, `splice()`, etc.)
+
+- Non-primitive data type, which means that arrays are objects and can hold references to other objects or values.
+
+# Properties and methods of arrays include:
+- `length`: Returns the number of elements in the array.
+- `push()`: Adds one or more elements to the end of the array and returns the new length of the array.
+- `pop()`: Removes the last element from the array and returns that element.
+- `shift()`: Removes the first element from the array and returns that element.
+- `unshift()`: Adds one or more elements to the beginning of the array and returns the new length of the array.
+- `indexOf()`: Returns the first index at which a given element can be found in the array, or -1 if it is not present.
+- `slice()`: Returns a shallow copy of a portion of an array into a new array object.
+- `splice()`: Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+---------------------------------------------------------------------------------------------------------------------------
+# CRUD operations on arrays:
+- Create: You can create an array using square brackets `[]` and add elements to it
+- Read: You can access elements of an array using their index
+- Update: You can update elements of an array by assigning a new value to a specific index
+- Delete: You can remove elements from an array using methods like `pop()`, `shift()`, or `splice()`
+
+# Example of CRUD operations on arrays:
+```javascript
+// Create
+let fruits = ["apple", "banana", "cherry"];
+
+// Read
+console.log(fruits[0]); // Output: "apple"
+
+// Update
+fruits[1] = "blueberry";
+console.log(fruits); // Output: ["apple", "blueberry", "cherry"]
+
+unshift() method is used to add an element at the beginning of the array
+
+fruits.unshift("orange");
+console.log(fruits); // Output: ["orange", "apple", "blueberry", "cherry"]
+
+push() method is used to add an element at the end of the array
+fruits.push("grape");
+console.log(fruits); // Output: ["orange", "apple", "blueberry", "cherry", "grape"]
+
+
+
+// Delete
+fruits.pop(); // Removes the last element
+console.log(fruits); // Output: ["orange", "apple", "blueberry", "cherry"]
+
+shift() method is used to remove the first element of the array
+fruits.shift(); // Removes the first element
+console.log(fruits); // Output: ["apple", "blueberry", "cherry"]
+
+// Using splice() to remove an element at a specific index
+fruits.splice(1, 1); // Removes 1 element at index 1
+console.log(fruits); // Output: ["apple", "cherry"]
+```
+---------------------------------------------------------------------------------------------------------------------------
+# Loops on arrays:
+- You can use loops to iterate over the elements of an array and perform operations on them.
+
+- Common loops used with arrays include `for`, `for...of`, and `forEach()`.
+
+```javascript
+let fruits = ["apple", "banana", "cherry"]; 
+// Using a for loop
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
+``` 
+---------------------------------------------------------------------------------------------------------------------------
+# String Data Type
+
+- A string is a sequence of characters enclosed in single quotes (`'`), double quotes (`"`), or backticks (`` ` ``). Strings are used to represent text in JavaScript.
+
+- Strings are immutable, which means that once a string is created, it cannot be changed. However, you can create a new string by concatenating or manipulating existing strings.
+
+- Strings are value data types, which means that when you assign a string to a variable, it creates a copy of the string value rather than a reference to the original string.
+
+- String are collection/ group of characters: alphabet, numbers, symbols, spaces, etc.
+
+- Strings are contegemous memory allocation, which means that the characters of a string are stored in contiguous memory locations, allowing for efficient access and manipulation of the string characters.
+
+- Strings are ordered, which means that the characters in a string have a specific order and can be accessed using their index. The first character of a string is accessed using index 0, the second character using index 1, and so on.
+
+---------------------------------------------------------------------------------------------------------------------------
+# Object Data Type
+- An object is a collection of key-value pairs, where each key is a string (or symbol) and each value can be of any data type. Objects are used to represent complex data structures and can contain properties and methods.
+
+- Objects are mutable, which means you can change the properties and values of an object after it has been created.
+
+- Objects are key-value pairs, where the key is a string (or symbol) that identifies a property, and the value can be of any data type, including other objects or functions.
+
+- Objects are non-primitive data types, which means that they are stored as references in memory. When you assign an object to a variable, it creates a reference to the original object rather than a copy of the object.
+
+- Keys in an object are unique, which means that each key can only appear once in an object. If you try to add a property with a key that already exists, it will overwrite the existing property. But values can be duplicated, which means that multiple keys can have the same value in an object.
+
+- Objects are dynamic, which means that you can add, modify, or delete properties from an object at any time.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+# Diagram of Reference Data Types:
+
+    main memory
+
+|                  |
+|                  |
+|                  |
+|                  |
+|------------------|
+|      Object.     |  <--- reference to the object
+|------------------|
+
+---------------------------------------------------------------------------------------------------------------------------
+# Function Data Type
+
+Function is a reusable block of code that performs a specific task. 
+---------------------------------------------------------------------------------------------------------------------------
+## Regular function
+- is a block of code that can be defined and executed when called. It can take parameters and return a value.
+---------------------------------------------------------------------------------------------------------------------------
+
+1. Function Declaration: A function can be declared using the `function` keyword followed by the function name and parentheses. The function body is enclosed in curly braces `{}`.
+```javascript
+function greet() {
+  console.log("Hello from JS");
+}
+```
+- Function with No Parameters: The above example is a function declaration without any parameters. It simply logs a message to the console when called.
+
+- Function with Parameters: You can also declare a function that takes parameters, which are placeholders for values that will be passed to the function when it is called.
+
+- Function with Return Value: A function can also return a value using the `return` statement. This allows you to capture the result of the function and use it in other parts of your code.
+
+
+2. Function Expression: A function can also be defined as an expression and assigned to a variable. This is known as a function expression.
+```javascript
+const greet = function() {
+  console.log("Hello from JS");
+};
+```
+---------------------------------------------------------------------------------------------------------------------------
+## Arrow Function: 
+Arrow functions are a more concise syntax for writing function expressions. They are defined using the `=>` syntax and do not have their own `this` context.
+```javascript
+const greet = () => {
+  console.log("Hello from JS");
+};
+```
