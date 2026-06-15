@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Calculator</title>
+    <style>
+        h1::first-letter{
+            color: red;
+        }
+        h1{
+            color: blue;
+        }
+        button{
+            width: 85px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: teal;
+            color: white;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        input{
+            border: 1px solid red;
+            border-radius: 10px;
+        }
+        input::placeholder{
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Mini Calculator</h1>
+    <input type="text" id="num1" placeholder="Enter first no.:" />
+    <input type="text" id="num2" placeholder="Enter second no.:" />
+    <br>
+    <br>
+    <button onclick="Add()">Add</button>
+    <button onclick="Sub()">Sub</button>
+    <button onclick="Mul()">Mul</button>
+    <button onclick="Div()">Div</button>
+  </body>
+</html>
+<script>
+    
+    function Add(){
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        const result = num1 + num2;
+        console.log(result);
+        alert("Result:-> " + result);
+    }
+    function Sub(){
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        const result = num1 - num2;
+        console.log(result);
+        alert("Result:-> " + result);
+    }
+    function Mul(){
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        const result = num1 * num2;
+        console.log(result);
+        alert("Result:-> " + result);
+    }
+    function Div(){
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        const result = num1 / num2;
+        console.log(result);
+        alert("Result:-> " + result);
+    }
+</script>
