@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get values from input Tags </title>
+</head>
+<body>
+    <input type="text" id="input" placeholder="Enter you name">
+    <button onClick="getName()">Click me</button>
+    <h1 id="change">You name...</h1>
+</body>
+</html>
+<script>
+    function getName(){
+        // step -1 select
+        const ip = document.getElementById("input");
+        console.log(input);
+
+        // step -2 Fetching values
+        const data = ip.value;
+        console.log(data);
+
+        // step -3 
+        const element = document.getElementById("change")
+        element.innerHTML = data;
+
+    }
+</script>
