@@ -1,157 +1,199 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Naptol</title>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        * {
-            text-align: center;
-        }
+      * {
+        text-align: center;
+        box-sizing: border-box;
+      }
 
+      body {
+        background-color: #f4f4f4;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      #search,
+      #sort {
+        padding: 8px;
+        margin: 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
+      }
+
+      #root {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      #root > div {
+        background-color: white;
+        padding: 15px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px;
+        border-radius: 10px;
+      }
+
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin: 10px 0;
+      }
+
+      p {
+        font-size: 14px;
+        color: #555;
+      }
+
+      button {
+        padding: 8px 12px;
+        border: none;
+        background-color: #3498db;
+        color: white;
+        border-radius: 5px;
+        margin: 5px;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+        cursor: pointer;
+      }
+
+      hr {
+        margin: 10px 0;
+      }
+
+      @media (max-width: 900px) {
         #root {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+          grid-template-columns: repeat(2, 1fr);
         }
+      }
 
-        #root>div {
-            /* border: 1px solid red; */
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            border-radius: 15px;
+      @media (max-width: 600px) {
+        #root {
+          grid-template-columns: 1fr;
         }
-
-        img {
-            width: 100%;
-            height: 350px;
-        }
-
-        button {
-            padding: 10px 15px;
-            border: none;
-            background-color: rgb(44, 139, 179);
-            color: rgb(32, 32, 33);
-            font-size: 15px;
-            margin: 10px;
-        }
-
-        button:hover {
-            background-color: yellowgreen;
-            cursor: pointer;
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Welcome to Naptol Product Page</h1>
 
-    <input type="text" id="search" placeholder="search Product ..." oninput="search()">
+    <input
+      type="text"
+      id="search"
+      placeholder="search Product ..."
+      oninput="search()"
+    />
 
     <select id="sort" onchange="sort()">
-        <option value="asc">asc</option>
-        <option value="dsc">dsc</option>
+      <option value="asc">asc</option>
+      <option value="dsc">dsc</option>
     </select>
 
     <div id="root">
-        <!-- All Product come here... -->
+      <!-- All Product come here... -->
     </div>
-</body>
-
+  </body>
 </html>
 
 <script>
+  let bag = [];
+  let cartArr = JSON.parse(localStorage.getItem("cart")) || [];
+  const api = "https://fakestoreapi.com/products";
 
-    let bag = []
-    let cartArr = JSON.parse(localStorage.getItem("cart")) || []
-    const api = "https://fakestoreapi.com/products";
+  fetch(api)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      bag = data;
+      displayCart(data);
+    })
+    .catch((err) => console.log(err));
 
-    fetch(api)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-            bag = data
-            displayCart(data);
-        }
-        ).catch((err) => console.log(err)
-        )
+  function displayCart(arr) {
+    document.querySelector("#root").innerHTML = "";
+    arr.forEach((el) => {
+      const box = document.createElement("div");
 
+      const image = document.createElement("img");
+      image.setAttribute("src", el.image);
 
-    function displayCart(arr) {
-        document.querySelector("#root").innerText = ""
-        arr.forEach((el) => {
+      const title = document.createElement("h3");
+      title.innerText = `Title: ${el.title}`;
 
-            const box = document.createElement("div");
+      const category = document.createElement("h3");
+      category.innerText = `Category: ${el.category}`;
 
-            const image = document.createElement("img");
-            image.setAttribute("src", el.image);
+      const description = document.createElement("p");
+      description.innerText = `Description: ${el.description}`;
 
-            const title = document.createElement("h3");
-            title.innerText = `Title: ${el.title}`
+      const price = document.createElement("button");
+      price.innerText = `Price: ${el.price}`;
 
-            const category = document.createElement("h3");
-            category.innerText = `Category: ${el.category}`
+      const rating = document.createElement("button");
+      rating.innerText = `Rating: ${el.rating.rate}`;
 
-            const description = document.createElement("p");
-            description.innerText = `Description: ${el.description}`
+      const hrr = document.createElement("hr");
 
-            const price = document.createElement("button");
-            price.innerText = `Price: ${el.price}`
+      const cart = document.createElement("button");
+      cart.innerText = "Add to Cart";
 
-            const rating = document.createElement("button");
-            rating.innerText = `Rating: ${el.rating.rate}`
+      cart.addEventListener("click", function () {
+        cartArr.push(el);
 
-            const hrr = document.createElement("hr");
-
-            const cart = document.createElement("button");
-            cart.innerText = "Add to Cart"
-
-            cart.addEventListener("click", function () {
-                cartArr.push(el);
-
-                localStorage.setItem("cart", JSON.stringify(cartArr));
-                // alert("Product added to cart")
-                Swal.fire({
-                    title: "Good job!",
-                    text: "Product added to cart",
-                    icon: "success"
-                });
-            })
-
-            box.append(image, title, category, description, price, rating, hrr, cart);
-
-            document.querySelector("#root").append(box)
-        })
-    }
-
-    function search() {
-        console.log(bag);
-
-        const query = document.querySelector("#search").value
-
-        const filterData = bag.filter((el) => {
-            return el.category.toLowerCase().includes(query.toLowerCase())
+        localStorage.setItem("cart", JSON.stringify(cartArr));
+        // alert("Product added to cart")
+        Swal.fire({
+          title: "Good job!",
+          text: "Product added to cart",
+          icon: "success",
         });
+      });
 
-        console.log(filterData);
+      box.append(image, title, category, description, price, rating, hrr, cart);
 
-        displayCart(filterData)
+      document.querySelector("#root").append(box);
+    });
+  }
 
+  function search() {
+    console.log(bag);
 
+    const query = document.querySelector("#search").value;
+
+    const filterData = bag.filter((el) => {
+      return el.category.toLowerCase().includes(query.toLowerCase());
+    });
+
+    console.log(filterData);
+
+    displayCart(filterData);
+  }
+
+  function sort() {
+    const query = document.querySelector("#sort").value;
+
+    if (query == "asc") {
+      const ans = bag.sort((a, b) => a.price - b.price);
+      displayCart(ans);
+    } else {
+      const ans = bag.sort((b, a) => a.price - b.price);
+      displayCart(ans);
     }
-
-
-    function sort() {
-        const query = document.querySelector("#sort").value
-
-        if (query == "asc") {
-            const ans = bag.sort((a, b) => a.price - b.price);
-            displayCart(ans)
-        } else {
-            const ans = bag.sort((b, a) => a.price - b.price);
-            displayCart(ans)
-        }
-
-    }
+  }
 </script>

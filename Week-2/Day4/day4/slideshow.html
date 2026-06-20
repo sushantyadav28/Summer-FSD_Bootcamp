@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slideshow</title>
+
+<style>
+    body{
+        text-align:center;
+        font-family: Arial, sans-serif;
+        background-color:#f4f4f4;
+    }
+
+    h1{
+        margin-top:20px;
+    }
+
+    #slider{
+        width:700px;
+        height:400px;
+        margin:30px auto;
+        border:2px solid gray;
+        border-radius:10px;
+        overflow:hidden;
+    }
+
+    #slider img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+</style>
+</head>
+<body>
+
+<h1>Image Slideshow</h1>
+
+<div id="slider">
+    <img id="slide" src="" alt="Slideshow">
+</div>
+
+</body>
+</html>
+
+<script>
+
+let images = [
+"https://picsum.photos/id/1015/700/400",
+"https://picsum.photos/id/1016/700/400",
+"https://picsum.photos/id/1018/700/400",
+"https://picsum.photos/id/1020/700/400",
+"https://picsum.photos/id/1024/700/400",
+"https://picsum.photos/id/1025/700/400",
+"https://picsum.photos/id/1031/700/400",
+"https://picsum.photos/id/1033/700/400",
+"https://picsum.photos/id/1035/700/400",
+"https://picsum.photos/id/1037/700/400",
+"https://picsum.photos/id/1040/700/400",
+"https://picsum.photos/id/1041/700/400",
+"https://picsum.photos/id/1043/700/400",
+"https://picsum.photos/id/1050/700/400",
+"https://picsum.photos/id/1052/700/400",
+"https://picsum.photos/id/1060/700/400",
+"https://picsum.photos/id/1067/700/400",
+"https://picsum.photos/id/1070/700/400",
+"https://picsum.photos/id/1080/700/400",
+"https://picsum.photos/id/1084/700/400"
+];
+
+let index = 0;
+
+let slide = document.getElementById("slide");
+
+slide.src = images[0];
+
+setInterval(function(){
+
+    index++;
+
+    if(index === images.length){
+        index = 0;
+    }
+
+    slide.src = images[index];
+
+}, 2000);
+
+</script>
