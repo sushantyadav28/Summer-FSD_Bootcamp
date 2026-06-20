@@ -1,173 +1,178 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Naptol</title>
 
     <style>
-        * {
-            text-align: center;
-            box-sizing: border-box;
-        }
+      * {
+        text-align: center;
+        box-sizing: border-box;
+      }
 
-        body {
-            background-color: #f4f4f4;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
+      body {
+        background-color: #f4f4f4;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
 
-        h1 {
-            margin-bottom: 20px;
-        }
+      h1 {
+        margin-bottom: 20px;
+      }
 
-        #total {
-            color: #2c3e50;
-        }
+      #total {
+        color: #2c3e50;
+      }
 
+      #root {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      #root > div {
+        background-color: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px;
+      }
+
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin: 10px 0;
+      }
+
+      p {
+        font-size: 14px;
+        color: #555;
+      }
+
+      button {
+        padding: 8px 12px;
+        border: none;
+        background-color: #3498db;
+        color: white;
+        border-radius: 5px;
+        margin: 5px;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+        cursor: pointer;
+      }
+
+      span {
+        color: #3498db;
+        font-weight: bold;
+      }
+
+      hr {
+        margin: 10px 0;
+      }
+
+      @media (max-width: 900px) {
         #root {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+          grid-template-columns: repeat(2, 1fr);
         }
+      }
 
-        #root>div {
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px;
+      @media (max-width: 600px) {
+        #root {
+          grid-template-columns: 1fr;
         }
-
-        img {
-            width: 100%;
-            height: 250px;
-            object-fit: contain;
-        }
-
-        h3 {
-            font-size: 16px;
-            margin: 10px 0;
-        }
-
-        p {
-            font-size: 14px;
-            color: #555;
-        }
-
-        button {
-            padding: 8px 12px;
-            border: none;
-            background-color: #3498db;
-            color: white;
-            border-radius: 5px;
-            margin: 5px;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-            cursor: pointer;
-        }
-
-        span {
-            color: #3498db;
-            font-weight: bold;
-        }
-
-        hr {
-            margin: 10px 0;
-        }
-
-        @media (max-width: 900px) {
-            #root {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            #root {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Welcome to Naptol Cart Page</h1>
 
-    <h1 id="total">Total cart value: </h1>
+    <h1 id="total">Total cart value:</h1>
+    <button onclick="window.location.href = 'index.html'">
+      Back To Products
+    </button>
 
     <div id="root">
-        <!-- All Product come here... -->
+      <!-- All Product come here... -->
     </div>
-</body>
-
+  </body>
 </html>
 
 <script>
+  let cartArr = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let cartArr = JSON.parse(localStorage.getItem("cart")) || [];
+  displayCart(cartArr);
 
-    displayCart(cartArr)
+  const totalCartValue = cartArr.reduce((acc, el) => {
+    return acc + el.price;
+  }, 0);
 
-    const totalCartValue = cartArr.reduce((acc, el) => {
-        return acc + el.price
-    }, 0)
+  console.log(totalCartValue);
+  document.querySelector("#total").innerText =
+    `Total cart value: ${totalCartValue} `;
 
-    console.log(totalCartValue);
-    document.querySelector("#total").innerText = `Total cart value: ${totalCartValue} `
+  function displayCart(arr) {
+    document.querySelector("#root").innerText = "";
+    arr.forEach((el, i) => {
+      const box = document.createElement("div");
 
+      const image = document.createElement("img");
+      image.setAttribute("src", el.image);
 
-    function displayCart(arr) {
+      const title = document.createElement("h3");
+      title.innerHTML = `<span>Title:</span> ${el.title}`;
 
-        document.querySelector("#root").innerText = ""
-        arr.forEach((el, i) => {
+      const category = document.createElement("h3");
+      category.innerText = `Category: ${el.category}`;
 
-            const box = document.createElement("div");
+      const description = document.createElement("p");
+      description.innerText = `Description: ${el.description}`;
 
-            const image = document.createElement("img");
-            image.setAttribute("src", el.image);
+      const price = document.createElement("button");
+      price.innerText = `Price: ${el.price}`;
 
-            const title = document.createElement("h3");
-            title.innerHTML = `<span>Title:</span> ${el.title}`
+      const rating = document.createElement("button");
+      rating.innerText = `Rating: ${el.rating.rate}`;
 
-            const category = document.createElement("h3");
-            category.innerText = `Category: ${el.category}`
+      const hrr = document.createElement("hr");
 
-            const description = document.createElement("p");
-            description.innerText = `Description: ${el.description}`
+      const removebtn = document.createElement("button");
+      removebtn.innerText = "Remove";
 
-            const price = document.createElement("button");
-            price.innerText = `Price: ${el.price}`
+      removebtn.addEventListener("click", function () {
+        cartArr.splice(i, 1);
 
-            const rating = document.createElement("button");
-            rating.innerText = `Rating: ${el.rating.rate}`
+        localStorage.setItem("cart", JSON.stringify(cartArr));
+        alert("Product Removed from cart");
+        displayCart(cartArr);
+        const totalCartValue = cartArr.reduce((acc, el) => {
+          return acc + el.price;
+        }, 0);
 
-            const hrr = document.createElement("hr");
+        console.log(totalCartValue);
+        document.querySelector("#total").innerText =
+          `Total cart value: ${totalCartValue} `;
+      });
 
-            const removebtn = document.createElement("button");
-            removebtn.innerText = "Remove"
+      box.append(
+        image,
+        title,
+        category,
+        description,
+        price,
+        rating,
+        hrr,
+        removebtn,
+      );
 
-            removebtn.addEventListener("click", function () {
-                cartArr.splice(i, 1)
-
-                localStorage.setItem("cart", JSON.stringify(cartArr));
-                alert("Product Removed from cart")
-                displayCart(cartArr)
-                const totalCartValue = cartArr.reduce((acc, el) => {
-                    return acc + el.price
-                }, 0)
-
-                console.log(totalCartValue);
-                document.querySelector("#total").innerText = `Total cart value: ${totalCartValue} `
-
-
-
-            })
-
-            box.append(image, title, category, description, price, rating, hrr, removebtn);
-
-            document.querySelector("#root").append(box)
-        })
-    }
+      document.querySelector("#root").append(box);
+    });
+  }
 </script>
